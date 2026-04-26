@@ -23,12 +23,14 @@
                 <li><a href="assets/Solomon_Sserwanga_Resume.pdf" target="_blank" class="nav-resume">Resume</a></li>
             </ul>
         </div>
+        <div class="scroll-progress" id="scrollProgress"></div>
     </nav>
 
     <!-- Home / Hero -->
     <section id="home" class="page-section">
         <div class="hero-content">
             <img src="images/profile.jpg" alt="Solomon Sserwanga" class="profile-pic" />
+            <span class="hero-eyebrow">Available for Opportunities</span>
             <h1>Solomon <span class="accent">Sserwanga</span></h1>
             <h2>Data Analyst</h2>
             <p>9+ years turning complex technical, financial, and statistical data into decisions that move businesses forward. I build the infrastructure, dashboards, and models — from ETL pipelines and data warehouses to machine learning solutions — that make data actually useful.</p>
@@ -47,7 +49,7 @@
     <!-- Skills -->
     <section id="skills" class="page-section">
         <div class="section-inner">
-            <h2 class="section-title">Skills</h2>
+            <h2 class="section-title" data-eyebrow="01 / Toolkit">Skills</h2>
 
             <div class="skill-category">
                 <h3 class="category-title">Databases</h3>
@@ -221,7 +223,7 @@
     <!-- Projects -->
     <section id="projects" class="page-section">
         <div class="section-inner">
-            <h2 class="section-title">Projects</h2>
+            <h2 class="section-title" data-eyebrow="02 / Selected Work">Projects</h2>
             <div class="projects-grid">
 
                 <div class="project-card">
@@ -338,7 +340,7 @@
     <!-- Education -->
     <section id="education" class="page-section">
         <div class="section-inner">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title" data-eyebrow="03 / Background">Education</h2>
             <div class="timeline">
 
                 <div class="timeline-item">
@@ -393,10 +395,10 @@
     <!-- Experience -->
     <section id="experience" class="page-section">
         <div class="section-inner">
-            <h2 class="section-title">Experience</h2>
+            <h2 class="section-title" data-eyebrow="04 / Career">Experience</h2>
             <div class="exp-list">
 
-                <div class="exp-card">
+                <div class="exp-card" data-initial="MM">
                     <div class="exp-header">
                         <span class="exp-company">Marsh McLennan Canada</span>
                         <span class="exp-location">Toronto, Canada</span>
@@ -405,7 +407,7 @@
                     <div class="exp-date">Apr 2024 – Present</div>
                 </div>
 
-                <div class="exp-card">
+                <div class="exp-card" data-initial="PR">
                     <div class="exp-header">
                         <span class="exp-company">PRGX Canada Group</span>
                         <span class="exp-location">Mississauga, Canada</span>
@@ -414,7 +416,7 @@
                     <div class="exp-date">May 2023 – Feb 2024</div>
                 </div>
 
-                <div class="exp-card">
+                <div class="exp-card" data-initial="WS">
                     <div class="exp-header">
                         <span class="exp-company">Workplace Safety and Insurance Board</span>
                         <span class="exp-location">Toronto, Canada</span>
@@ -423,7 +425,7 @@
                     <div class="exp-date">June 2019 – Apr 2023</div>
                 </div>
 
-                <div class="exp-card">
+                <div class="exp-card" data-initial="FX">
                     <div class="exp-header">
                         <span class="exp-company">FedEx Trade Networks</span>
                         <span class="exp-location">Mississauga, Canada</span>
@@ -432,7 +434,7 @@
                     <div class="exp-date">Nov 2018 – June 2019</div>
                 </div>
 
-                <div class="exp-card">
+                <div class="exp-card" data-initial="NS">
                     <div class="exp-header">
                         <span class="exp-company">National Social Security Fund</span>
                         <span class="exp-location">Kampala, Uganda</span>
@@ -448,7 +450,7 @@
     <!-- Contact -->
     <footer id="contact" class="page-section">
         <div class="contact-inner">
-            <h2 class="section-title">Contact</h2>
+            <h2 class="section-title" data-eyebrow="05 / Get in Touch">Contact</h2>
             <div class="contact-links">
                 <a href="mailto:solomonsny@gmail.com">
                     <i class="fas fa-envelope"></i> solomonsny@gmail.com
@@ -492,6 +494,17 @@
                     showSection(href);
                 }
             });
+
+            // Scroll progress bar at the bottom of the navbar
+            var $progress = $('#scrollProgress');
+            function updateProgress() {
+                var scrollTop = $(window).scrollTop();
+                var docHeight = $(document).height() - $(window).height();
+                var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                $progress.css('width', pct + '%');
+            }
+            $(window).on('scroll resize', updateProgress);
+            updateProgress();
         });
     </script>
 
