@@ -15,9 +15,10 @@
             <a href="#home" class="nav-logo">Solomon Sserwanga</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="assets/Solomon_Sserwanga_Resume.pdf" target="_blank" class="nav-resume">Resume</a></li>
             </ul>
@@ -25,7 +26,7 @@
     </nav>
 
     <!-- Home / Hero -->
-    <section id="home">
+    <section id="home" class="page-section">
         <div class="hero-content">
             <h1>Solomon <span class="accent">Sserwanga</span></h1>
             <h2>Data Analyst</h2>
@@ -42,52 +43,8 @@
         </div>
     </section>
 
-    <!-- Education -->
-    <section id="education">
-        <div class="section-inner">
-            <h2 class="section-title">Education</h2>
-            <div class="edu-list">
-                <div class="edu-card">
-                    <div class="edu-left">
-                        <div class="edu-institution">Queens University</div>
-                        <div class="edu-degree">MSc in Data Analytics</div>
-                    </div>
-                    <div class="edu-date">June 2025 – Present</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-left">
-                        <div class="edu-institution">York University</div>
-                        <div class="edu-degree">Certificate in Big Data Analytics</div>
-                    </div>
-                    <div class="edu-date">Jan 2023 – Dec 2023</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-left">
-                        <div class="edu-institution">CFA Institute USA</div>
-                        <div class="edu-degree">Chartered Financial Analyst Level II</div>
-                    </div>
-                    <div class="edu-date">June 2016 – June 2018</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-left">
-                        <div class="edu-institution">Association of Chartered Certified Accountants UK</div>
-                        <div class="edu-degree">Advanced Diploma in Accounting and Business</div>
-                    </div>
-                    <div class="edu-date">Dec 2013 – Dec 2016</div>
-                </div>
-                <div class="edu-card">
-                    <div class="edu-left">
-                        <div class="edu-institution">Makerere University, Kampala</div>
-                        <div class="edu-degree">Bachelor of Science in Statistics and Mathematics</div>
-                    </div>
-                    <div class="edu-date">Aug 2008 – Jan 2012</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Skills -->
-    <section id="skills">
+    <section id="skills" class="page-section">
         <div class="section-inner">
             <h2 class="section-title">Skills</h2>
 
@@ -261,7 +218,7 @@
     </section>
 
     <!-- Projects -->
-    <section id="projects">
+    <section id="projects" class="page-section">
         <div class="section-inner">
             <h2 class="section-title">Projects</h2>
             <div class="projects-grid">
@@ -377,8 +334,52 @@
         </div>
     </section>
 
+    <!-- Education -->
+    <section id="education" class="page-section">
+        <div class="section-inner">
+            <h2 class="section-title">Education</h2>
+            <div class="edu-list">
+                <div class="edu-card">
+                    <div class="edu-left">
+                        <div class="edu-institution">Queens University</div>
+                        <div class="edu-degree">MSc in Data Analytics</div>
+                    </div>
+                    <div class="edu-date">June 2025 – Present</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-left">
+                        <div class="edu-institution">York University</div>
+                        <div class="edu-degree">Certificate in Big Data Analytics</div>
+                    </div>
+                    <div class="edu-date">Jan 2023 – Dec 2023</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-left">
+                        <div class="edu-institution">CFA Institute USA</div>
+                        <div class="edu-degree">Chartered Financial Analyst Level II</div>
+                    </div>
+                    <div class="edu-date">June 2016 – June 2018</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-left">
+                        <div class="edu-institution">Association of Chartered Certified Accountants UK</div>
+                        <div class="edu-degree">Advanced Diploma in Accounting and Business</div>
+                    </div>
+                    <div class="edu-date">Dec 2013 – Dec 2016</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-left">
+                        <div class="edu-institution">Makerere University, Kampala</div>
+                        <div class="edu-degree">Bachelor of Science in Statistics and Mathematics</div>
+                    </div>
+                    <div class="edu-date">Aug 2008 – Jan 2012</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Experience -->
-    <section id="experience">
+    <section id="experience" class="page-section">
         <div class="section-inner">
             <h2 class="section-title">Experience</h2>
             <div class="exp-list">
@@ -433,7 +434,7 @@
     </section>
 
     <!-- Contact -->
-    <footer id="contact">
+    <footer id="contact" class="page-section">
         <div class="contact-inner">
             <h2 class="section-title">Contact</h2>
             <div class="contact-links">
@@ -454,24 +455,30 @@
     <script src="assets/js/jquery.min.js"></script>
     <script>
         $(function () {
-            // Smooth scroll with navbar offset
-            $('a[href^="#"]').on('click', function (e) {
-                var target = $(this.hash);
-                if (!target.length) return;
+            function showSection(id) {
+                $('.page-section').hide();
+                $(id).show();
+                $('.nav-links a').removeClass('active');
+                $('.nav-links a[href="' + id + '"]').addClass('active');
+                window.scrollTo(0, 0);
+            }
+
+            // Show home on load
+            showSection('#home');
+
+            // Nav tab clicks
+            $('.nav-links a[href^="#"]').on('click', function (e) {
                 e.preventDefault();
-                $('html, body').animate({ scrollTop: target.offset().top - 60 }, 450);
+                showSection($(this).attr('href'));
             });
 
-            // Active nav link on scroll
-            $(window).on('scroll', function () {
-                var pos = $(this).scrollTop() + 80;
-                $('section, footer').each(function () {
-                    if ($(this).offset().top <= pos && $(this).offset().top + $(this).outerHeight() > pos) {
-                        var id = $(this).attr('id');
-                        $('.nav-links a').removeClass('active');
-                        $('.nav-links a[href="#' + id + '"]').addClass('active');
-                    }
-                });
+            // Buttons inside sections that link to other sections
+            $('.page-section a[href^="#"]').on('click', function (e) {
+                var href = $(this).attr('href');
+                if ($(href).hasClass('page-section')) {
+                    e.preventDefault();
+                    showSection(href);
+                }
             });
         });
     </script>
