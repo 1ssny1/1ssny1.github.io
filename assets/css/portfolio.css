@@ -589,6 +589,23 @@ section { padding: 6rem 2rem; scroll-margin-top: 60px; }
 
 .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
 
+.project-notebook-link {
+    padding: 0.6rem 1.25rem 0.9rem;
+    border-top: 1px solid var(--line);
+}
+.project-notebook-link a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--accent-cool);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s var(--ease);
+}
+.project-notebook-link a:hover { color: var(--white); }
+
 .tag {
     background: rgba(230, 57, 70, 0.10);
     color: var(--accent);
