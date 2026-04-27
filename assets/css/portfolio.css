@@ -237,9 +237,10 @@ button:focus-visible {
 }
 
 .hero-content h1 .accent {
-    color: var(--accent);
-    -webkit-text-fill-color: var(--accent);
-    background: none;
+    background: linear-gradient(135deg, #22d3ee, #6c7cff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-content h2 {
