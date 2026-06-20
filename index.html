@@ -13,7 +13,13 @@
     <nav id="navbar">
         <div class="nav-inner">
             <a href="#home" class="nav-logo">Solomon Sserwanga</a>
-            <ul class="nav-links">
+            <!-- Mobile Menu Toggle -->
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -502,13 +508,29 @@
     <script src="assets/js/jquery.min.js"></script>
     <script>
         $(function () {
+            const $navToggle = $('#navToggle');
+            const $navLinks = $('#navLinks');
+
             function showSection(id) {
                 $('.page-section').hide();
                 $(id).show();
                 $('.nav-links a').removeClass('active');
                 $('.nav-links a[href="' + id + '"]').addClass('active');
+                
+                // Hide mobile menu on link click
+                $navToggle.removeClass('open');
+                $navLinks.removeClass('active');
+                $('body').removeClass('nav-open');
+                
                 window.scrollTo(0, 0);
             }
+
+            // Mobile menu toggle click
+            $navToggle.on('click', function () {
+                $(this).toggleClass('open');
+                $navLinks.toggleClass('active');
+                $('body').toggleClass('nav-open');
+            });
 
             // Show home on load
             showSection('#home');
